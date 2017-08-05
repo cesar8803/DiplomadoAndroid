@@ -1,19 +1,17 @@
+
 package mx.mobilestudio.placefinder.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by cesar on 8/5/17.
- */
+public class Response {
 
-class Response {
-    ArrayList<Venue> venues;
+    private List<Venue> venues = null;
 
-    public ArrayList<Venue> getVenues() {
+    public List<Venue> getVenues() {
         return venues;
     }
 
-    public void setVenues(ArrayList<Venue> venues) {
+    public void setVenues(List<Venue> venues) {
         this.venues = venues;
     }
 

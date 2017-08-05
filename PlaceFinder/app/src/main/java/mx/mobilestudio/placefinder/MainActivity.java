@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
 
 
-        Toast.makeText(this, (String) response, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, (String) response, Toast.LENGTH_LONG).show();
 
             /* Interpretaremos el response en formato JSON por medio de la libreria GSON*/
 
@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
                 ApiFourSquareResponse fourSquareResponse = gson.fromJson((String) response, ApiFourSquareResponse.class);
 
-
-                Toast.makeText(this, fourSquareResponse.getResponse().getVenues(), Toast.LENGTH_SHORT).show();
+                //  Imprimimos en pantalla el nombre del primer Venue del arreglo
+                Toast.makeText(this, fourSquareResponse.getResponse().getVenues().get(2).getName(), Toast.LENGTH_SHORT).show();
 
             }catch ( JsonParseException e){
 

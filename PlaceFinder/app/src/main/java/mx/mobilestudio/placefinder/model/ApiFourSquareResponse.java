@@ -1,13 +1,11 @@
+
 package mx.mobilestudio.placefinder.model;
 
-/**
- * Created by cesar on 8/5/17.
- */
 
 public class ApiFourSquareResponse {
-    private  Meta meta;
-    private Response response;
 
+    private Meta meta;
+    private Response response;
 
     public Meta getMeta() {
         return meta;
@@ -24,6 +22,5 @@ public class ApiFourSquareResponse {
     public void setResponse(Response response) {
         this.response = response;
     }
-
 
 }

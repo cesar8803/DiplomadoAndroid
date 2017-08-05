@@ -1,11 +1,26 @@
+
 package mx.mobilestudio.placefinder.model;
 
-/**
- * Created by cesar on 8/5/17.
- */
 
-class Meta {
+public class Meta {
 
-    int code;
-    String requestId;
+    private Integer code;
+    private String requestId;
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
 }

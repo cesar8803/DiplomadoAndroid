@@ -1,8 +1,17 @@
+
 package mx.mobilestudio.placefinder.model;
 
-/**
- * Created by cesar on 8/5/17.
- */
 
-class BeenHere {
+public class BeenHere {
+
+    private Integer lastCheckinExpiredAt;
+
+    public Integer getLastCheckinExpiredAt() {
+        return lastCheckinExpiredAt;
+    }
+
+    public void setLastCheckinExpiredAt(Integer lastCheckinExpiredAt) {
+        this.lastCheckinExpiredAt = lastCheckinExpiredAt;
+    }
+
 }

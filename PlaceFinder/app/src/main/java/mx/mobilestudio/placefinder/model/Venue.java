@@ -1,21 +1,25 @@
+
 package mx.mobilestudio.placefinder.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by cesar on 8/5/17.
- */
+public class Venue {
 
-class Venue {
-
-    String id;
-    String name;
-    Contact contact;
-    Location location;
-    ArrayList<Category> categories;
-    boolean verified;
-    Stats stats;
-    BeenHere beenHere;
+    private String id;
+    private String name;
+    private Contact contact;
+    private Location location;
+    private List<Category> categories = null;
+    private Boolean verified;
+    private Stats stats;
+    private Boolean allowMenuUrlEdit;
+    private BeenHere beenHere;
+    private Specials specials;
+    private HereNow hereNow;
+    private String referralId;
+    private List<Object> venueChains = null;
+    private Boolean hasPerk;
+    private String url;
 
     public String getId() {
         return id;
@@ -49,19 +53,19 @@ class Venue {
         this.location = location;
     }
 
-    public ArrayList<Category> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(ArrayList<Category> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
-    public boolean isVerified() {
+    public Boolean getVerified() {
         return verified;
     }
 
-    public void setVerified(boolean verified) {
+    public void setVerified(Boolean verified) {
         this.verified = verified;
     }
 
@@ -73,6 +77,14 @@ class Venue {
         this.stats = stats;
     }
 
+    public Boolean getAllowMenuUrlEdit() {
+        return allowMenuUrlEdit;
+    }
+
+    public void setAllowMenuUrlEdit(Boolean allowMenuUrlEdit) {
+        this.allowMenuUrlEdit = allowMenuUrlEdit;
+    }
+
     public BeenHere getBeenHere() {
         return beenHere;
     }
@@ -80,4 +92,53 @@ class Venue {
     public void setBeenHere(BeenHere beenHere) {
         this.beenHere = beenHere;
     }
+
+    public Specials getSpecials() {
+        return specials;
+    }
+
+    public void setSpecials(Specials specials) {
+        this.specials = specials;
+    }
+
+    public HereNow getHereNow() {
+        return hereNow;
+    }
+
+    public void setHereNow(HereNow hereNow) {
+        this.hereNow = hereNow;
+    }
+
+    public String getReferralId() {
+        return referralId;
+    }
+
+    public void setReferralId(String referralId) {
+        this.referralId = referralId;
+    }
+
+    public List<Object> getVenueChains() {
+        return venueChains;
+    }
+
+    public void setVenueChains(List<Object> venueChains) {
+        this.venueChains = venueChains;
+    }
+
+    public Boolean getHasPerk() {
+        return hasPerk;
+    }
+
+    public void setHasPerk(Boolean hasPerk) {
+        this.hasPerk = hasPerk;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 }
