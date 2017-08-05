@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
                 ApiFourSquareResponse fourSquareResponse = gson.fromJson((String) response, ApiFourSquareResponse.class);
 
+
+                Toast.makeText(this, fourSquareResponse.getResponse().getVenues(), Toast.LENGTH_SHORT).show();
+
             }catch ( JsonParseException e){
 
             }

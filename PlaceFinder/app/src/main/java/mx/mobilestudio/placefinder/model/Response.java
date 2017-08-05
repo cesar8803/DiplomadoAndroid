@@ -7,6 +7,14 @@ import java.util.ArrayList;
  */
 
 class Response {
-
     ArrayList<Venue> venues;
+
+    public ArrayList<Venue> getVenues() {
+        return venues;
+    }
+
+    public void setVenues(ArrayList<Venue> venues) {
+        this.venues = venues;
+    }
+
 }
