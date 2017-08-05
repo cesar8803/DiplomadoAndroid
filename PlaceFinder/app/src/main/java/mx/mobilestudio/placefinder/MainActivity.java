@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     public void onResponse(Object response) {
 
-        Toast.makeText(this,"asdasdasdasd", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, (String) response, Toast.LENGTH_LONG).show();
     }
 
     @Override
