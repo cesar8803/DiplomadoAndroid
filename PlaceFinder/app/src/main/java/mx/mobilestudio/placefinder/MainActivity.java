@@ -12,6 +12,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
+
+import mx.mobilestudio.placefinder.model.ApiFourSquareResponse;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener,
                                                                 Response.ErrorListener{
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,URL,this, this);
 
+
         // Aqui ejecutamos el request.
         queue.add(stringRequest);
 
@@ -52,7 +57,24 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     @Override
     public void onResponse(Object response) {
 
+
+
         Toast.makeText(this, (String) response, Toast.LENGTH_LONG).show();
+
+            /* Interpretaremos el response en formato JSON por medio de la libreria GSON*/
+
+            Gson  gson = new Gson();
+
+            try {
+
+
+                ApiFourSquareResponse fourSquareResponse = gson.fromJson((String) response, ApiFourSquareResponse.class);
+
+            }catch ( JsonParseException e){
+
+            }
+
+
     }
 
     @Override
