@@ -1,10 +1,13 @@
 package mx.mobilestudio.placefinder.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
+import mx.mobilestudio.placefinder.R;
 import mx.mobilestudio.placefinder.model.Venue;
 
 /**
@@ -24,7 +27,9 @@ public class ListLocationVenuesAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 
-        
+        View  view_item = LayoutInflater.from(parent.getContext()).inflate(R.layout.venue_item_list,null);
+
+
         return null;
     }
 
