@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
                     Fragment mapLocationsResultsFragment = MapLocationsResultsFragment.newInstance("","");
 
-                    fragmentTransaction.add(R.id.main_central_content_container,  mapLocationsResultsFragment);
+                    fragmentTransaction.replace(R.id.main_central_content_container,  mapLocationsResultsFragment);
 
                     fragmentTransaction.commit();
 
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 //  Imprimimos en pantalla el nombre del primer Venue del arreglo
                 Toast.makeText(this, fourSquareResponse.getResponse().getVenues().get(2).getName(), Toast.LENGTH_SHORT).show();
 
-                onFragmentAttach(FRAGMENT_MAP_ID);
+                onFragmentAttach(FRAGMENT_LIST_ID);
 
             }catch ( JsonParseException e){
 
@@ -160,6 +160,17 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     @Override
     public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.button_lista :
+                onFragmentAttach(FRAGMENT_LIST_ID);
+                break;
+            case  R.id.button_map:
+                onFragmentAttach(FRAGMENT_MAP_ID);
+
+                break;
+        }
+
 
     }
 }
