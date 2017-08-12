@@ -20,6 +20,11 @@ import mx.mobilestudio.placefinder.model.ApiFourSquareResponse;
 public class MainActivity extends AppCompatActivity implements Response.Listener,
                                                                 Response.ErrorListener{
 
+
+    public static  final  int FRAGMENT_LIST_ID = 1;
+    public static  final  int FRAGMENT_MAP_ID = 2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,22 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         callFourSquareApi("gasolinera");
     }
 
+
+
+    public void onFragmentAttach(int FRAGMENT_REQUIRED){
+
+            switch (FRAGMENT_REQUIRED){
+
+                case FRAGMENT_LIST_ID :
+
+                    break;
+
+                case  FRAGMENT_MAP_ID :
+
+                    break;
+            }
+        
+    }
 
 
 
