@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import mx.mobilestudio.placefinder.R;
+import mx.mobilestudio.placefinder.model.Venue;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +29,17 @@ public class ListLocationsResultsFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private String mParam2;
+
+
+    public List<Venue> getVenues() {
+        return venues;
+    }
+
+    public void setVenues(List<Venue> venues) {
+        this.venues = venues;
+    }
+
+    private List<Venue>  venues;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,11 +56,14 @@ public class ListLocationsResultsFragment extends Fragment {
      * @return A new instance of fragment ListLocationsResultsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListLocationsResultsFragment newInstance(String param1, String param2) {
+    public static ListLocationsResultsFragment newInstance(String param1, List<Venue> param2) {
         ListLocationsResultsFragment fragment = new ListLocationsResultsFragment();
+
+        // Le estamos enviando el arreglo de Locaciones que nos dio FourSquare
+        fragment.setVenues(param2);
+
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,7 +73,6 @@ public class ListLocationsResultsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 

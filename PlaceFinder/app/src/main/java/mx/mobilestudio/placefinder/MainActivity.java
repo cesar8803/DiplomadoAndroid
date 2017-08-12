@@ -20,9 +20,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
+import java.util.List;
+
 import mx.mobilestudio.placefinder.fragment.ListLocationsResultsFragment;
 import mx.mobilestudio.placefinder.fragment.MapLocationsResultsFragment;
 import mx.mobilestudio.placefinder.model.ApiFourSquareResponse;
+import mx.mobilestudio.placefinder.model.Venue;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener,
                                                                 Response.ErrorListener ,
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     public Button button_lista;
     public Button button_map;
+
+
+    private List<Venue> venues = null;
 
 
 
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 case FRAGMENT_LIST_ID :
 
 
-                    Fragment listLocationsResultsFragment = ListLocationsResultsFragment.newInstance("","");
+                    Fragment listLocationsResultsFragment = ListLocationsResultsFragment.newInstance("",venues);
 
                     fragmentTransaction.replace(R.id.main_central_content_container,  listLocationsResultsFragment);
 
@@ -138,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 Toast.makeText(this, fourSquareResponse.getResponse().getVenues().get(2).getName(), Toast.LENGTH_SHORT).show();
 
                 onFragmentAttach(FRAGMENT_LIST_ID);
+
+                venues =  fourSquareResponse.getResponse().getVenues();
 
             }catch ( JsonParseException e){
 
