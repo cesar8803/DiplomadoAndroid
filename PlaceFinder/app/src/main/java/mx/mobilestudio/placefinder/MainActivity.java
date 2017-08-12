@@ -1,5 +1,8 @@
 package mx.mobilestudio.placefinder;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,14 +18,18 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
+import mx.mobilestudio.placefinder.fragment.ListLocationsResultsFragment;
 import mx.mobilestudio.placefinder.model.ApiFourSquareResponse;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener,
-                                                                Response.ErrorListener{
+                                                                Response.ErrorListener ,
+                                                                ListLocationsResultsFragment.OnFragmentInteractionListener{
 
 
     public static  final  int FRAGMENT_LIST_ID = 1;
     public static  final  int FRAGMENT_MAP_ID = 2;
+
+    public FragmentManager fragmentManager;
 
 
     @Override
@@ -31,15 +38,29 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
         setContentView(R.layout.activity_main);
 
         callFourSquareApi("gasolinera");
+
+
+        fragmentManager = getFragmentManager();
     }
 
 
 
     public void onFragmentAttach(int FRAGMENT_REQUIRED){
 
+
+
             switch (FRAGMENT_REQUIRED){
 
                 case FRAGMENT_LIST_ID :
+
+                    FragmentTransaction   fragmentTransaction = fragmentManager.beginTransaction();
+
+                    Fragment listLocationsResultsFragment = ListLocationsResultsFragment.newInstance("","");
+
+                    fragmentTransaction.add(R.id.main_central_content_container,  listLocationsResultsFragment);
+
+                    fragmentTransaction.commit();
+
 
                     break;
 
@@ -47,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
                     break;
             }
-        
+
     }
 
 
@@ -94,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 //  Imprimimos en pantalla el nombre del primer Venue del arreglo
                 Toast.makeText(this, fourSquareResponse.getResponse().getVenues().get(2).getName(), Toast.LENGTH_SHORT).show();
 
+                onFragmentAttach(FRAGMENT_LIST_ID);
+
             }catch ( JsonParseException e){
 
             }
@@ -105,6 +128,11 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
     public void onErrorResponse(VolleyError error) {
         Log.v("ERROR", "No hace nada");
         Toast.makeText(this,"ERROR", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
