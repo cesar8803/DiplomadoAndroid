@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,7 +26,7 @@ import mx.mobilestudio.placefinder.model.ApiFourSquareResponse;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener,
                                                                 Response.ErrorListener ,
-                                                                ListLocationsResultsFragment.OnFragmentInteractionListener{
+                                                                ListLocationsResultsFragment.OnFragmentInteractionListener, View.OnClickListener{
 
 
     public static  final  int FRAGMENT_LIST_ID = 1;
@@ -32,11 +34,22 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     public FragmentManager fragmentManager;
 
+    public Button button_lista;
+    public Button button_map;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        button_lista = (Button) findViewById(R.id.button_lista);
+
+        button_map = (Button) findViewById(R.id.button_map);
+
+        button_lista.setOnClickListener(this);
+        button_map.setOnClickListener(this);
 
         callFourSquareApi("gasolinera");
 
@@ -142,6 +155,11 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }
