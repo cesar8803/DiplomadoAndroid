@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
 import mx.mobilestudio.placefinder.fragment.ListLocationsResultsFragment;
+import mx.mobilestudio.placefinder.fragment.MapLocationsResultsFragment;
 import mx.mobilestudio.placefinder.model.ApiFourSquareResponse;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener,
@@ -47,13 +48,13 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
     public void onFragmentAttach(int FRAGMENT_REQUIRED){
 
+        FragmentTransaction   fragmentTransaction = fragmentManager.beginTransaction();
 
 
             switch (FRAGMENT_REQUIRED){
 
                 case FRAGMENT_LIST_ID :
 
-                    FragmentTransaction   fragmentTransaction = fragmentManager.beginTransaction();
 
                     Fragment listLocationsResultsFragment = ListLocationsResultsFragment.newInstance("","");
 
@@ -65,6 +66,14 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                     break;
 
                 case  FRAGMENT_MAP_ID :
+
+
+                    Fragment mapLocationsResultsFragment = MapLocationsResultsFragment.newInstance("","");
+
+                    fragmentTransaction.add(R.id.main_central_content_container,  mapLocationsResultsFragment);
+
+                    fragmentTransaction.commit();
+
 
                     break;
             }
@@ -115,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 //  Imprimimos en pantalla el nombre del primer Venue del arreglo
                 Toast.makeText(this, fourSquareResponse.getResponse().getVenues().get(2).getName(), Toast.LENGTH_SHORT).show();
 
-                onFragmentAttach(FRAGMENT_LIST_ID);
+                onFragmentAttach(FRAGMENT_MAP_ID);
 
             }catch ( JsonParseException e){
 
