@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import mx.mobilestudio.placefinder.R;
+import mx.mobilestudio.placefinder.adapter.ListLocationVenuesAdapter;
 import mx.mobilestudio.placefinder.model.Venue;
 
 /**
@@ -35,6 +37,8 @@ public class ListLocationsResultsFragment extends Fragment {
 
     private View myFragmentView;
     private RecyclerView.LayoutManager layoutManager;
+    private ListLocationVenuesAdapter listLocationVenuesAdapter;
+
 
 
     public RecyclerView recyclerView;
@@ -99,11 +103,14 @@ public class ListLocationsResultsFragment extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
 
+        try{
 
+            listLocationVenuesAdapter = new ListLocationVenuesAdapter(venues);
+            recyclerView.setAdapter(listLocationVenuesAdapter);
 
-
-
-
+        }catch (Exception e){
+            Log.v("EXCEPTION", e.getMessage().toString());
+        }
 
 
         return myFragmentView;
