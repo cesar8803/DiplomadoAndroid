@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
 
                     Fragment listLocationsResultsFragment = ListLocationsResultsFragment.newInstance("","");
 
-                    fragmentTransaction.add(R.id.main_central_content_container,  listLocationsResultsFragment);
+                    fragmentTransaction.replace(R.id.main_central_content_container,  listLocationsResultsFragment);
 
                     fragmentTransaction.commit();
 
