@@ -4,6 +4,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,13 @@ public class ListLocationsResultsFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
+
+
+    private View myFragmentView;
+    private RecyclerView.LayoutManager layoutManager;
+
+
+    public RecyclerView recyclerView;
 
 
     public List<Venue> getVenues() {
@@ -80,7 +89,24 @@ public class ListLocationsResultsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list_locations_results, container, false);
+
+        myFragmentView  = inflater.inflate(R.layout.fragment_list_locations_results, container, false);
+
+
+        recyclerView = (RecyclerView) myFragmentView.findViewById(R.id.recycler_view_venues);
+
+        layoutManager = new LinearLayoutManager(getActivity());
+
+        recyclerView.setLayoutManager(layoutManager);
+
+
+
+
+
+
+
+
+        return myFragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
