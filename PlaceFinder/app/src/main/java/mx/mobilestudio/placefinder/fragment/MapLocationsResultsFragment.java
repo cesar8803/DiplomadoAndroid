@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+
 import mx.mobilestudio.placefinder.R;
 
 /**
@@ -23,6 +26,9 @@ public class MapLocationsResultsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
+    private GoogleMap googleMap;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +71,16 @@ public class MapLocationsResultsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map_locations_results, container, false);
+
+          View mapfragmentview =      inflater.inflate(R.layout.fragment_map_locations_results, container, false);
+
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+
+        //TODO   Una ves que obtenemos la referencia del map fragment se debera manipular
+
+        return mapfragmentview;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
