@@ -143,9 +143,10 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 //  Imprimimos en pantalla el nombre del primer Venue del arreglo
                 Toast.makeText(this, fourSquareResponse.getResponse().getVenues().get(2).getName(), Toast.LENGTH_SHORT).show();
 
-                onFragmentAttach(FRAGMENT_LIST_ID);
 
                 venues =  fourSquareResponse.getResponse().getVenues();
+
+                onFragmentAttach(FRAGMENT_LIST_ID);
 
             }catch ( JsonParseException e){
 

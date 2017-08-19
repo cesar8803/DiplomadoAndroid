@@ -38,6 +38,10 @@ public class ListLocationVenuesAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         ((MyViewHolder)holder).name.setText(venues.get(position).getName());
+        ((MyViewHolder)holder).distance.setText(venues.get(position).getLocation().getDistance().toString());
+        ((MyViewHolder)holder).address.setText(venues.get(position).getLocation().getAddress());
+
+
     }
 
     @Override
