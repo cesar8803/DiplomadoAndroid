@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements Response.Listener
                 case  FRAGMENT_MAP_ID :
 
 
-                    Fragment mapLocationsResultsFragment = MapLocationsResultsFragment.newInstance("","");
+                    Fragment mapLocationsResultsFragment = MapLocationsResultsFragment.newInstance("",venues);
 
                     fragmentTransaction.replace(R.id.main_central_content_container,  mapLocationsResultsFragment);
 

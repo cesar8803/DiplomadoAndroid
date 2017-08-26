@@ -14,8 +14,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 import mx.mobilestudio.placefinder.R;
+import mx.mobilestudio.placefinder.model.Venue;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +37,17 @@ public class MapLocationsResultsFragment extends Fragment implements OnMapReadyC
 
 
     private GoogleMap googleMap;
+
+    public List<Venue> getVenues() {
+        return venues;
+    }
+
+    public void setVenues(List<Venue> venues) {
+        this.venues = venues;
+    }
+
+    private List<Venue>  venues;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -53,11 +68,13 @@ public class MapLocationsResultsFragment extends Fragment implements OnMapReadyC
      * @return A new instance of fragment MapLocationsResultsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MapLocationsResultsFragment newInstance(String param1, String param2) {
+    public static MapLocationsResultsFragment newInstance(String param1, List<Venue> param2) {
         MapLocationsResultsFragment fragment = new MapLocationsResultsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
+        fragment.setVenues(param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -121,9 +138,36 @@ public class MapLocationsResultsFragment extends Fragment implements OnMapReadyC
 
         CameraUpdate  cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,14f);
 
+
+        MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("MobileStudio");
+
+        this.googleMap.addMarker(markerOptions);
+
         this.googleMap.moveCamera(cameraUpdate);
 
+        paintFourSquareMarketsinMap(venues);
+
     }
+
+
+
+    public void paintFourSquareMarketsinMap(List<Venue> venues){
+        // Metodo encargado de pintar los marcadores de los venues en el mapa
+                for(Venue currentVenue : venues){
+                        double  lat = currentVenue.getLocation().getLat();
+                        double lng  = currentVenue.getLocation().getLng();
+
+                        MarkerOptions currentVenueoptions =  new MarkerOptions();
+
+                        currentVenueoptions.position(new LatLng(lat,lng));
+                        currentVenueoptions.title( currentVenue.getName() );
+
+                        googleMap.addMarker(currentVenueoptions);
+
+                }
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
