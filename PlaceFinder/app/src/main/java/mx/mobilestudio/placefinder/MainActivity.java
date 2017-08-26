@@ -29,7 +29,9 @@ import mx.mobilestudio.placefinder.model.Venue;
 
 public class MainActivity extends AppCompatActivity implements Response.Listener,
                                                                 Response.ErrorListener ,
-                                                                ListLocationsResultsFragment.OnFragmentInteractionListener, View.OnClickListener{
+                                                                ListLocationsResultsFragment.OnFragmentInteractionListener,
+                                                                MapLocationsResultsFragment.OnFragmentInteractionListener,
+                                                                View.OnClickListener{
 
 
     public static  final  int FRAGMENT_LIST_ID = 1;

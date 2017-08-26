@@ -8,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 
 import mx.mobilestudio.placefinder.R;
 
@@ -21,7 +25,7 @@ import mx.mobilestudio.placefinder.R;
  * Use the {@link MapLocationsResultsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapLocationsResultsFragment extends Fragment {
+public class MapLocationsResultsFragment extends Fragment implements OnMapReadyCallback{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,7 +79,9 @@ public class MapLocationsResultsFragment extends Fragment {
           View mapfragmentview =      inflater.inflate(R.layout.fragment_map_locations_results, container, false);
 
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
+        mapFragment.getMapAsync(this);
 
         //TODO   Una ves que obtenemos la referencia del map fragment se debera manipular
 
@@ -105,6 +111,18 @@ public class MapLocationsResultsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.googleMap = googleMap;
+
+        LatLng latLng = new LatLng(19.395209,-99.1544203 );
+
+        CameraUpdate  cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,14f);
+
+        this.googleMap.moveCamera(cameraUpdate);
+
     }
 
     /**
