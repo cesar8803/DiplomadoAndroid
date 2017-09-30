@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import mx.mobilestudio.promohunters.fragment.CategoriesFragment;
 import mx.mobilestudio.promohunters.fragment.HomeFragment;
 import mx.mobilestudio.promohunters.fragment.OnFragmentInteractionListener;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(menuBottomListener);
         switchFragment(1);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+
     }
 
 
