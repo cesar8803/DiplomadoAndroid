@@ -68,6 +68,8 @@ public class ListLocationVenuesAdapter extends RecyclerView.Adapter{
             distance = (TextView) itemView.findViewById(R.id.distance_text_view);
             address = (TextView) itemView.findViewById(R.id.format_address_text_view);
             cardView = (CardView) itemView.findViewById(R.id.cardview);
+
+            cardView.setBackgroundColor(0x000000);
             cardView.setOnClickListener(this);
 
         }
