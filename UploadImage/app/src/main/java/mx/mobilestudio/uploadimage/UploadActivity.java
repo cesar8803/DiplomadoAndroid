@@ -59,10 +59,10 @@ public class UploadActivity extends AppCompatActivity {
             if (!hasPermissions(mContext, PERMISSIONS)) {
                 ActivityCompat.requestPermissions((Activity) mContext, PERMISSIONS, REQUEST );
             } else {
-                //do here
+                    Toast.makeText(this, "Se tiene permiso ",Toast.LENGTH_LONG).show();
             }
         } else {
-            //do here
+            Toast.makeText(this, "Nothing to do!! <= 23 ",Toast.LENGTH_LONG).show();
         }
 
 
