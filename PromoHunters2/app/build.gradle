@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "mx.mobilestudio.promohunters"
         minSdkVersion 19
@@ -34,16 +34,22 @@ dependencies {
 
     //firebase core
 
-    implementation 'com.google.firebase:firebase-core:11.4.0'
+    implementation 'com.google.firebase:firebase-core:10.2.1'
 
     //firebase storage
-    implementation 'com.google.firebase:firebase-storage:11.4.0'
+    implementation 'com.google.firebase:firebase-storage:10.2.1'
+
+    //firebase messaging
+    implementation 'com.google.firebase:firebase-messaging:10.2.1'
+
+    //firebase messaging
+    implementation 'com.google.firebase:firebase-auth:10.2.1'
 
 
     //firebase messaging
-    implementation 'com.google.firebase:firebase-messaging:11.4.0'
+    implementation 'com.google.firebase:firebase-database:10.2.1'
+
+
+    apply plugin: 'com.google.gms.google-services'
 
 }
-
-apply plugin: 'com.google.gms.google-services'
-

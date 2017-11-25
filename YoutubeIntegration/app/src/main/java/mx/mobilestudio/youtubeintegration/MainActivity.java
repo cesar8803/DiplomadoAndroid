@@ -1,13 +1,13 @@
-package mx.mobilestudio.promohunters;
+package mx.mobilestudio.youtubeintegration;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CreateNewPromotionFormActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_new_promotion_form);
+        setContentView(R.layout.activity_main);
     }
 }
